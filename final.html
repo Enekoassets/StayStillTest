@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="text-center py-6 bg-white shadow-sm">
+    <h1 id="headerTitle" class="text-3xl font-bold"></h1>
+    <p id="headerExplanation" class="text-gray-500 mt-2"></p>
+  </header>
+
+  <!-- Main Video Section -->
+  <main class="flex flex-col items-center justify-center flex-grow p-6">
+    <p id="eskerrakText" class="text-xl"></p>
+  </main>
+  <!-- Selection Section -->
+  <section class="flex flex-col bg-white shadow-inner py-8 px-6 items-center">
+    <h2 id="selectionText" class="text-2xl font-semibold text-center mb-6"></h2>
+    <a href="comparison.html"><button id="startButton" class="mt-4 md:mt-0 bg-green-600 text-white font-semibold px-6 py-2 rounded-xl hover:bg-green-700 transition"></button></a>
+  </section>
+  </div>
+  <!-- Footer -->
+  <footer class="text-center text-gray-500 text-sm py-4">
+    © 2025 Eneko Atxa Landa
+  </footer>
+</body>
+<script>
+  let translations = {};
+  var language = localStorage.getItem("language");
+  loadLanguage(language);
+  async function loadLanguage(lang) {
+    try {
+        const response = await fetch(`${lang}.json`);
+        translations = await response.json();
+        updateContent();
+      } catch (err) {
+        console.error("Failed to load language file:", err);
+      }
+  }
+  
+  function updateContent() {
+    document.title = translations.title;
+    document.getElementById("headerTitle").innerHTML = translations.headerTitle;
+    document.getElementById("headerExplanation").innerHTML = translations.headerExplanation;
+    document.getElementById("selectionText").innerHTML = translations.selectionText;
+    document.getElementById("startButton").innerHTML = translations.startButton;
+    document.getElementById("explanation").innerHTML = translations.explanation.join("<br><br>");
+    }
+  
+</script>
+</html>

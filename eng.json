@@ -1,0 +1,22 @@
+{
+    "title": "Naturalness comparison",
+    "headerTitle": "Naturalness comparison",
+    "headerExplanation": "Watch the two videos and choose the one that you believe to be the most natural and realistic.",
+    "selectionText": "Press the start button after reading the explanation.",
+    "startButton": "Start!",
+    "explanation": ["In this exercise you will evaluate different systems that generate human animations. You will be shown pairs of videos. You have to watch these videos, and you will be able to rewatch them any number of times.",
+    "Then, you will have to choose which one is the most realistic and natural one. For that, in each pair of videos, you will have to choose an option out of 5 different options, to also define the strength of your choice. In other words, this will be the activity that you will have to complete for each pair of videos:",
+    "<b>Which video is the most natural and realistic one?</b> Choices: (A) Video 1, clear preference; (B) Video 1, slight preference; (C) No preference; (D) Video 2, slight preference; (E) Video 2, clear preference.",
+    "To assure that users are paying attention, some 'attention checks' will be performed. Suddenly, in one of the pairs of videos, you will be presented a special video. In that video, you will be asked to choose a specific choice. Therefore, in that instance, forget about the naturalness exercise, and choose the video that you are told. Then, you can continue with the normal exercise.",
+    "You will be shown 15 pairs of videos in total. Please, try to pay attention until the end of the test, and answer as good as you can.",
+    "Thank you in advance for spending time to complete this task. Your participation is very useful and important to us."],
+    "option0":"Video 1, clear preference",
+    "option1":"Video 1, slight preference",
+    "option2":"No preference",
+    "option3":"Video 2, slight preference",
+    "option4":"Video 2, clear preference",
+    "submitButton":"Send",
+    "mainQuestion": "Which video is the most natural and realistic one?",
+    "video1" : "Video 1",
+    "video2" : "Video 2"
+}

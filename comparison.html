@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Firebase App (core) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <!-- Firebase Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+</head>
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="text-center py-6 bg-white shadow-sm">
+    <h1 id="headerTitle" class="text-3xl font-bold"></h1>
+    <p id="headerExplanation" class="text-gray-500 mt-2"></p>
+  </header>
+
+  <!-- Main Video Section -->
+  <main class="flex flex-col items-center justify-center flex-grow p-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">
+      <!-- Video 1 -->
+      <div class="bg-white rounded-2xl shadow p-4 flex flex-col items-center">
+        <video class="rounded-xl w-full" controls>
+          <source src="videos/video1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p id="video1" class="mt-3 font-medium text-lg"></p>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="bg-white rounded-2xl shadow p-4 flex flex-col items-center">
+        <video class="rounded-xl w-full" controls>
+          <source src="videos/video2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p id="video2" class="mt-3 font-medium text-lg"></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Selection Section -->
+  <section class="bg-white shadow-inner py-8 px-6">
+    <h2 id="mainQuestion" class="text-2xl font-semibold text-center mb-6"></h2>
+    
+    <form class="flex flex-col md:flex-row justify-center gap-6 items-center">
+      <div class="flex flex-wrap gap-2">
+      <label class="cursor-pointer">
+        <input id="option0" type="radio" name="preferredVideo" value="-2" class="hidden peer" />
+        <span class="peer-checked:bg-blue-600 peer-checked:text-white bg-gray-200 text-gray-800 px-4 py-2 rounded-lg transition"></span>
+      </label>
+
+      <label class="cursor-pointer">
+        <input id="option1" type="radio" name="preferredVideo" value="-1" class="hidden peer" />
+        <span class="peer-checked:bg-blue-600 peer-checked:text-white bg-gray-200 text-gray-800 px-4 py-2 rounded-lg transition"></span>
+      </label>
+
+      <label class="cursor-pointer">
+        <input id="option2" type="radio" name="preferredVideo" value="0" class="hidden peer" />
+        <span class="peer-checked:bg-blue-600 peer-checked:text-white bg-gray-200 text-gray-800 px-4 py-2 rounded-lg transition"></span>
+      </label>
+
+      <label class="cursor-pointer">
+        <input id="option3" type="radio" name="preferredVideo" value="1" class="hidden peer" />
+        <span class="peer-checked:bg-blue-600 peer-checked:text-white bg-gray-200 text-gray-800 px-4 py-2 rounded-lg transition"></span>
+      </label>
+
+      <label class="cursor-pointer">
+        <input id="option4" type="radio" name="preferredVideo" value="2" class="hidden peer" />
+        <span class="peer-checked:bg-blue-600 peer-checked:text-white bg-gray-200 text-gray-800 px-4 py-2 rounded-lg transition"></span>
+      </label>
+    </div>
+
+    <button id="submitButton" type="submit" class="mt-4 md:mt-0 bg-green-600 text-white font-semibold px-6 py-2 rounded-xl hover:bg-green-700 transition opacity-50 cursor-not-allowed"></button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-gray-500 text-sm py-4">
+    © 2025 Eneko Atxa Landa
+  </footer>
+
+</body>
+<script>
+  let translations = {};
+  var language = localStorage.getItem("language");
+  loadLanguage(language);
+  async function loadLanguage(lang) {
+    try {
+        const response = await fetch(`${lang}.json`);
+        translations = await response.json();
+        updateContent();
+      } catch (err) {
+        console.error("Failed to load language file:", err);
+      }
+  }
+  
+  function updateContent() {
+    document.title = translations.title;
+    document.getElementById("headerTitle").innerHTML = translations.headerTitle;
+    document.getElementById("headerExplanation").innerHTML = translations.headerExplanation;
+    document.getElementById("video1").innerHTML = translations.video1;
+    document.getElementById("video2").innerHTML = translations.video2;
+    document.getElementById("mainQuestion").innerHTML = translations.mainQuestion;
+    document.getElementById("submitButton").innerHTML = translations.submitButton;
+    document.getElementById("option0").nextElementSibling.innerHTML = translations.option0;
+    document.getElementById("option1").nextElementSibling.innerHTML = translations.option1;
+    document.getElementById("option2").nextElementSibling.innerHTML = translations.option2;
+    document.getElementById("option3").nextElementSibling.innerHTML = translations.option3;
+    document.getElementById("option4").nextElementSibling.innerHTML = translations.option4;}
+  
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const videoContainers = document.querySelectorAll("video");
+  const form = document.querySelector("form");
+  var db;
+  var videoId;
+  var responseCount = 0;
+  var maxResponses = 30;
+  var videoIds = [];
+  var numVideos = 110;
+  var attentionCheck1 = 7;
+  var attentionCheck2 = 17;
+  loadNextVideos(responseCount);
+  loadFirebase();
+  // 5. Handle user selection
+  form.addEventListener("submit", async(e) => {
+    e.preventDefault();
+
+    const selected = form.querySelector("input[name='preferredVideo']:checked");
+    if (!selected) {
+      alert("Bideo bat aukeratu behar duzu jarraitzeko.");
+      return;
+    }
+    
+    const result = {
+      videoNum: videoId,
+      left: videoContainers[0].src.split("/")[videoContainers[0].src.split("/").length-2],
+      right: videoContainers[1].src.split("/")[videoContainers[1].src.split("/").length-2],
+      choice: selected.value,
+      timestamp: new Date().toISOString()
+    };
+    
+    localStorage.setItem(`videoChoice_${videoId}`, JSON.stringify(result));
+    try {
+    await db.collection("videoComparison").add(result);
+    console.log("Saved to Firebase!");
+
+    responseCount++;
+    if (responseCount < maxResponses) {
+      form.reset();
+      loadNextVideos(responseCount);
+    } else {
+      document.body.innerHTML = `
+        <div class="flex flex-col items-center justify-center h-screen text-center">
+          <h1 class="text-3xl font-bold mb-4">Eskerrik asko!</h1>
+          <p class="text-lg">Amaitu duzu proba (${maxResponses} erantzun).</p>
+        </div>
+      `;
+    }
+
+  } catch (err) {
+    console.error(err);
+    alert("Errorea datuak gordetzean.");
+  }
+  });
+
+function loadNextVideos(responseCount){
+  // Remove Visual feedback
+  const submitButton = form.querySelector("button[type='submit']");
+  videoContainers.forEach((video, index) => {
+  video.classList.remove("ring-4", "ring-green-400");
+  submitButton.disabled = true;
+  submitButton.classList.add("opacity-50", "cursor-not-allowed");
+  });
+  // Select a new video ID that is not repeated
+  videoId = Math.floor(Math.random() * numVideos) + 1;
+  while(videoIds.includes(videoId)){
+    videoId = Math.floor(Math.random() * numVideos) + 1;
+  }
+  videoIds.push(videoId);
+  console.log(videoIds);
+  const options = ["easing", "gt", "nn", "noise", "slerp"];
+  const chosen = [];
+
+  while (chosen.length < 2) {
+    const pick = options[Math.floor(Math.random() * options.length)];
+    if (!chosen.includes(pick)) chosen.push(pick);
+  }
+
+  var path1 = `videos/${chosen[0]}/${chosen[0]}_${videoId}.mp4`;
+  var path2 = `videos/${chosen[1]}/${chosen[1]}_${videoId}.mp4`;
+
+  console.log(responseCount, attentionCheck1, attentionCheck2);
+  if(responseCount === attentionCheck1){
+    path1 = `videos/attentionChecks/${localStorage.getItem("language")}1.mp4`;
+    path2 = `videos/attentionChecks/${localStorage.getItem("language")}1.mp4`;
+  } else if(responseCount === attentionCheck2){
+    path1 = `videos/attentionChecks/${localStorage.getItem("language")}1.mp4`;
+    path2 = `videos/attentionChecks/${localStorage.getItem("language")}2.mp4`;
+  } else {
+    path1 = `videos/${chosen[0]}/${chosen[0]}_${videoId}.mp4`;
+    path2 = `videos/${chosen[1]}/${chosen[1]}_${videoId}.mp4`;
+  }
+  // 2. Build the video paths
+
+  // 3. Randomly assign left/right positions
+  const order = Math.random() < 0.5 ? [0,1] : [1,0];
+
+  // 4. Load videos in the correct order
+  videoContainers[0].src = order[0] === 0 ? path1 : path2;
+  videoContainers[1].src = order[1] === 0 ? path1 : path2;
+
+  let videoEnded = [false, false];
+  videoContainers.forEach((video, index) => {
+    video.addEventListener("ended", () => {
+      videoEnded[index] = true;
+      console.log(`Video ${index} (${order[index]}) ended`);
+
+      // Visual feedback (optional)
+      video.classList.add("ring-4", "ring-green-400");
+
+      // If both ended → enable submit
+      if (videoEnded.every(Boolean)) {
+        submitButton.disabled = false;
+        submitButton.classList.remove("opacity-50", "cursor-not-allowed");
+        console.log("✅ Both videos finished — user can submit now.");
+      }
+    });
+  });
+  }
+
+  function loadFirebase(){
+    const firebaseConfig = {
+      apiKey: "AIzaSyDnzX-AfwckOMR7lpGlD-7WNUU9kNJDXGk",
+      authDomain: "videocomparison-6fb38.firebaseapp.com",
+      projectId: "videocomparison-6fb38",
+      storageBucket: "videocomparison-6fb38.firebasestorage.app",
+      messagingSenderId: "58783934505",
+      appId: "1:58783934505:web:d1559111e9c306700cd438"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Get Firestore reference
+    db = firebase.firestore();
+  }
+});
+</script>
+</html>

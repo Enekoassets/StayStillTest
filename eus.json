@@ -1,0 +1,22 @@
+{
+    "title": "Naturaltasun konparaketa",
+    "headerTitle": "Naturaltasun konparaketa",
+    "headerExplanation": "Ikusi bi bideoak eta aukeratu bietan naturalena eta errealistena iruditzen zaizuna",
+    "selectionText": "Sakatu botoia dena irakurri ostean, proba hasteko.",
+    "startButton": "Hasi!",
+    "explanation": ["Ariketa honetan, gizakien animazioak sortzen dituzten sistema ezberdinak ebaluatuko dituzu. Bideoak erakutsiko zaikizu, binaka. Bideo hauek ikusi behar dituzu, eta behar adina aldiz errepikatu ditzakezu.",
+    "Ondoren, bideo hauetatik naturalena eta errealistena zein den aukeratu beharko duzu. Bikote bakoitzean, 5 aukerako eskala batean aukeratu beharko duzu, zure aukeraketaren maila ere adierazita geratu dadin. Alegia, hau izango da bikote bakoitzean egingo duzun ariketa:",
+    "<b>Zein bideo iruditzen zaizu naturalena eta errealistena?</b> Aukerak: (A) 1. Bideoa, argi eta garbi; (B) 1. Bideoa, gutxigatik; (C) Berdin; (D) 2. Bideoa, gutxigatik; (E) 2. Bideoa, argi eta garbi.",
+    "Erabiltzaileak uneoro adi daudela ziurtatzeko, 'atentzio proba' deritzon proba bat agertuko zaizu bat-batean. Proba horretan, bideo arrunt baten ordez, bi bideoetako bat berezia izango da. Bideo horretan, aukera espezifiko bat hautatzeko eskatuko zaizu. Beraz, bikote horretan ahaztu naturaltasun konparaketa eta aukeratu eskatu zaizun aukera. Ondoren jarraitu normal proba egiten.",
+    "Guztira 15 bideo pare erakutsiko zaizkizu. Mesedez, saia zaitez probaren amaieraraino adi egoten eta ahalik eta ondoen erantzuten.",
+    "Aldez aurretik, eskerrik asko ikerketa honetan parte hartzeko denbora eskaintzeagatik. Zure parte hartzea oso baliagarria eta garrantzitsua da guretzat."],
+    "option0":"1. Bideoa, argi eta garbi",
+    "option1":"1. Bideoa, gutxigatik",
+    "option2":"Berdin",
+    "option3":"2. Bideoa, gutxigatik",
+    "option4":"2. Bideoa, argi eta garbi",
+    "submitButton":"Bidali",
+    "mainQuestion": "Zein bideo iruditzen zaizu naturalena eta errealistena?",
+    "video1" : "1. Bideoa",
+    "video2" : "2. Bideoa"
+}

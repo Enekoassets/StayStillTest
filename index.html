@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naturaltasun konparaketa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="text-center py-6 bg-white shadow-sm">
+    <h1 class="text-3xl font-bold">Language / Hizkuntza / Idioma</h1>
+  </header>
+
+  <!-- Main Video Section -->
+  <main class="flex flex-col items-center justify-center flex-grow p-6">
+    <h class="text-2xl">Choose your language / Aukeratu zure hizkuntza / Elige tu idioma</h>
+    <div class="flex flex-wrap gap-2 m-6 p-6">
+      <label class="cursor-pointer">
+        <input type="radio" name="language" value="English" class="hidden peer" />
+        <span class="peer-checked:bg-blue-600 peer-checked:text-white bg-gray-200 text-gray-800 px-4 py-2 rounded-lg transition">
+          English
+        </span>
+      </label>
+
+      <label class="cursor-pointer">
+        <input type="radio" name="language" value="Euskara" class="hidden peer" />
+        <span class="peer-checked:bg-blue-600 peer-checked:text-white bg-gray-200 text-gray-800 px-4 py-2 rounded-lg transition">
+          Euskara
+        </span>
+      </label>
+
+      <label class="cursor-pointer">
+        <input type="radio" name="language" value="Español" class="hidden peer" />
+        <span class="peer-checked:bg-blue-600 peer-checked:text-white bg-gray-200 text-gray-800 px-4 py-2 rounded-lg transition">
+          Español
+        </span>
+      </label>
+  </main>
+  <!-- Selection Section -->
+  <section class="flex flex-col bg-white shadow-inner py-8 px-6 items-center">
+    <a href="explanation.html"><button class="mt-4 p-6 md:mt-0 bg-green-600 text-white font-semibold px-6 py-2 rounded-xl hover:bg-green-700 transition cursor-not-allowed"></button></a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-gray-500 text-sm py-4">
+    © 2025 Eneko Atxa Landa
+  </footer>
+</body>
+<script>
+  const radios = document.querySelectorAll('input[type="radio"]');
+  const button = document.querySelector('button');
+  var lang = "";
+  radios.forEach((radio) => {
+    radio.addEventListener('change', () => {
+      button.classList.remove('cursor-not-allowed');
+      button.classList.add('cursor-pointer');
+      button.disabled = false;
+      if(radio.value === 'English'){
+        button.innerHTML = 'Start!';
+        lang = "eng";
+      } else if(radio.value === 'Euskara'){
+        button.innerHTML = 'Hasi!';
+        lang = "eus";
+      } else if(radio.value === 'Español'){
+        button.innerHTML = 'Comenzar!';
+        lang = "es";
+      }
+      localStorage.setItem('language', lang);
+    });
+  });
+</script>
+</html>
