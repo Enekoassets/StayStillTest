@@ -7,8 +7,8 @@
     "explanation": ["En este ejercicio evaluarás diferentes sistemas que generan animaciones humanas. Se te mostrarán pares de videos. Tendrás que ver estos videos y podrás volver a verlos tantas veces como quieras.",
     "Luego, tendrás que elegir cuál de ellos es el más realista y natural. Para ello, en cada par de videos deberás elegir una opción entre 5 opciones diferentes, para definir también la intensidad de tu preferencia. En otras palabras, esta será la actividad que tendrás que completar para cada par de videos:",
     "<b>¿Qué video es el más natural y realista?</b> Opciones: (A) Video 1, preferencia clara; (B) Video 1, ligera preferencia; (C) No tengo preferencia; (D) Video 2, ligera preferencia; (E) Video 2, preferencia clara.",
-    "Para asegurarnos de que los usuarios están prestando atención, se realizarán algunas 'pruebas de atención'. En uno de los pares de videos aparecerá de repente un video especial. En ese video se te pedirá que elijas una opción específica. Por lo tanto, en ese caso, olvídate del ejercicio de naturalidad y elige el video que se te indique. Luego podrás continuar con el ejercicio de manera normal.",
-    "Se te mostrarán un total de 20 pares de videos. Por favor, intenta prestar atención hasta el final de la prueba y responde lo mejor que puedas.",
+    "Se te mostrarán un total de 20 pares de videos. Por favor, es muy importante que preste atención a cada par de vídeos y responder de la manera más adecuada posible hasta el final de la prueba.",
+    "Antes de empezar con la prueba real, se te mostrarán dos ejemplos, para asegurarse de que todo esté bien entendido",
     "Gracias de antemano por dedicar tiempo a completar esta tarea. Tu participación es muy útil e importante para nosotros."],
     "option0":"Video 1, preferencia clara",
     "option1":"Video 1, ligera preferencia",
@@ -20,5 +20,11 @@
     "video1" : "Video 1",
     "video2" : "Video 2",
     "thankYouTitle": "Muchas gracias!",
-    "thankYouText": "Muchas gracias por participar en este ejercicio. Su participación es muy útil e importante para nosotros."
+    "thankYouText": "Muchas gracias por participar en este ejercicio. Su participación es muy útil e importante para nosotros.",
+    "examplesTitle": "Ejemplos",
+    "examplesExplanation": "Aquí se muestran dos pares de vídeos, y se explican cuál es la mejor opción a elegirpara cada par.",
+    "example1Title":"Ejemplo 1",
+    "example2Title":"Ejemplo 2",
+    "example1Text":"En este ejemplo, Video 1 claramente muestra una animación más natural y realista que Video 2, ya que Video 2 es un animación muy ruidosa con mucho temblor. En este caso, la mejor opción seria <b>Video 1, preferencia clara</b>.",
+    "example2Text":"En este ejemplo, Video 1 tambien muestra la animación mas natural, ya que el video 2 muestra una animación extraña con un movimiento muy robótico. En este caso, la mejor opción sería <b>Video 1, ligera preferencia</b> o <b>Video 1, preferencia clara </b>, dependiendo de tu opinión personal."
 }

@@ -17,6 +17,7 @@
   <header class="text-center py-6 bg-white shadow-sm">
     <h1 id="headerTitle" class="text-3xl font-bold"></h1>
     <p id="headerExplanation" class="text-gray-500 mt-2"></p>
+    <h1 id="headerProgress" class="text-3xl font-bold text-gray-500 mt-2"></h1>
   </header>
 
   <!-- Main Video Section -->
@@ -120,7 +121,7 @@
   var db;
   var videoId;
   var responseCount = 0;
-  var maxResponses = 22;
+  var maxResponses = 20;
   var videoIds = [];
   var numVideos = 55;
   var attentionCheck1 = 7;
@@ -158,8 +159,11 @@
     try {
     await db.collection("videoComparison").add(result);
     console.log("Saved to Firebase!");
-
-    responseCount++;
+    
+    if(videoId != attentionCheck1 && videoId != attentionCheck2){
+      responseCount++;  
+    }
+    
     if (responseCount < maxResponses) {
       form.reset();
       loadNextVideos(responseCount);
@@ -180,6 +184,7 @@
   });
 
 function loadNextVideos(responseCount){
+  document.getElementById("headerProgress").innerHTML = (responseCount + 1) + " / " + maxResponses; 
   // Remove Visual feedback
   const submitButton = form.querySelector("button[type='submit']");
   videoContainers.forEach((video, index) => {
@@ -220,25 +225,35 @@ function loadNextVideos(responseCount){
   // 3. Randomly assign left/right positions
   const order = Math.random() < 0.5 ? [0,1] : [1,0];
 
-  // 4. Load videos in the correct order
+  // Reset videoEnded state:
+  let videoEnded = [false, false];
+
+  // Reset videos properly:
+  videoContainers.forEach(v => {
+    v.pause();
+    v.currentTime = 0;
+    v.load();
+  });
+
+  // Assign sources:
   videoContainers[0].src = order[0] === 0 ? path1 : path2;
   videoContainers[1].src = order[1] === 0 ? path1 : path2;
 
-  let videoEnded = [false, false];
+  // Add listeners only once:
   videoContainers.forEach((video, index) => {
-    video.addEventListener("ended", () => {
+    video.onended = () => {   // replaces any previous handler
       videoEnded[index] = true;
+      console.log(videoEnded);
 
-      // Visual feedback (optional)
       video.classList.add("ring-4", "ring-green-400");
 
-      // If both ended → enable submit
       if (videoEnded.every(Boolean)) {
         submitButton.disabled = false;
         submitButton.classList.remove("opacity-50", "cursor-not-allowed");
       }
-    });
+    };
   });
+
   }
 
   function loadFirebase(){

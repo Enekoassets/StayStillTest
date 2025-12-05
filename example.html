@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Firebase App (core) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <!-- Firebase Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+</head>
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="text-center py-6 bg-white shadow-sm">
+    <h1 id="examplesTitle" class="text-3xl font-bold"></h1>
+    <p id="examplesExplanation" class="text-gray-500 mt-2"></p>
+  </header>
+
+  <!-- Main Video Section -->
+  <main class="flex flex-col items-center justify-center flex-grow p-6">
+    <div>
+      <h1 id="example1Title" class="p-6 text-3xl font-bold"></h1>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">
+      <!-- Video 1 -->
+      <div class="bg-white rounded-2xl shadow p-4 flex flex-col items-center">
+        <video class="rounded-xl w-full" controls>
+          <source src="videos/gt/gt_1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p id="video1" class="mt-3 font-medium text-lg"></p>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="bg-white rounded-2xl shadow p-4 flex flex-col items-center">
+        <video class="rounded-xl w-full" controls>
+          <source src="videos/noise/noise_1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p id="video2" class="mt-3 font-medium text-lg"></p>
+      </div>
+    </div>
+    <div>
+    <p id="example1Text" class ="p-6 text-xl"></p>
+    </div>
+    <div>
+     <h1 id="example2Title" class="p-6 text-3xl font-bold"></h1>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">
+    <!-- Video 1 -->
+      <div class="bg-white rounded-2xl shadow p-4 flex flex-col items-center">
+        <video class="rounded-xl w-full" controls>
+          <source src="videos/gt/gt_1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p id="video3" class="mt-3 font-medium text-lg"></p>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="bg-white rounded-2xl shadow p-4 flex flex-col items-center">
+        <video class="rounded-xl w-full" controls>
+          <source src="videos/slerp/slerp_1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p id="video4" class="mt-3 font-medium text-lg"></p>
+      </div>
+    </div>
+  </div>
+    <div>
+      <p id="example2Text" class ="p-6 text-xl"></p>
+    </div>
+  </main>
+
+  <!-- Selection Section -->
+  <section class="bg-white shadow-inner py-8 px-6 items-center flex flex-col">
+        <a href="comparison.html"><button id="startButton" class="mt-4 md:mt-0 bg-green-600 text-white font-semibold px-6 py-2 rounded-xl hover:bg-green-700 transition"></button></a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-gray-500 text-sm py-4">
+    © 2025 Eneko Atxa Landa
+  </footer>
+
+</body>
+<script>
+  let translations = {};
+  var language = localStorage.getItem("language");
+  loadLanguage(language);
+  async function loadLanguage(lang) {
+    try {
+        const response = await fetch(`${lang}.json`);
+        translations = await response.json();
+        updateContent();
+      } catch (err) {
+        console.error("Failed to load language file:", err);
+      }
+  }
+  
+  function updateContent() {
+    document.title = translations.title;
+    document.getElementById("video1").innerHTML = translations.video1;
+    document.getElementById("video2").innerHTML = translations.video2;
+    document.getElementById("video3").innerHTML = translations.video1;
+    document.getElementById("video4").innerHTML = translations.video2;
+    document.getElementById("startButton").innerHTML = translations.startButton;
+    document.getElementById("examplesTitle").innerHTML = translations.examplesTitle;
+    document.getElementById("examplesExplanation").innerHTML = translations.examplesExplanation;
+    document.getElementById("example1Title").innerHTML = translations.example1Title;
+    document.getElementById("example1Text").innerHTML = translations.example1Text;
+    document.getElementById("example2Title").innerHTML = translations.example2Title;
+    document.getElementById("example2Text").innerHTML = translations.example2Text;
+  }
+  </script>
+</html>

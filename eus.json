@@ -7,8 +7,8 @@
     "explanation": ["Ariketa honetan, gizakien animazioak sortzen dituzten sistema ezberdinak ebaluatuko dituzu. Bideoak erakutsiko zaikizu, binaka. Bideo hauek ikusi behar dituzu, eta behar adina aldiz errepikatu ditzakezu.",
     "Ondoren, bideo hauetatik naturalena eta errealistena zein den aukeratu beharko duzu. Bikote bakoitzean, 5 aukerako eskala batean aukeratu beharko duzu, zure aukeraketaren maila ere adierazita geratu dadin. Alegia, hau izango da bikote bakoitzean egingo duzun ariketa:",
     "<b>Zein bideo iruditzen zaizu naturalena eta errealistena?</b> Aukerak: (A) 1. Bideoa, argi eta garbi; (B) 1. Bideoa, gutxigatik; (C) Berdin; (D) 2. Bideoa, gutxigatik; (E) 2. Bideoa, argi eta garbi.",
-    "Erabiltzaileak uneoro adi daudela ziurtatzeko, 'atentzio proba' deritzon proba bat agertuko zaizu bat-batean. Proba horretan, bideo arrunt baten ordez, bi bideoetako bat berezia izango da. Bideo horretan, aukera espezifiko bat hautatzeko eskatuko zaizu. Beraz, bikote horretan ahaztu naturaltasun konparaketa eta aukeratu eskatu zaizun aukera. Ondoren jarraitu normal proba egiten.",
-    "Guztira 20 bideo pare erakutsiko zaizkizu. Mesedez, saia zaitez probaren amaieraraino adi egoten eta ahalik eta ondoen erantzuten.",
+    "Guztira 20 bideo pare erakutsiko zaizkizu. Mesedez, oso garrantzitsua da bideo pare bakoitza arreta handiz ikusi eta aukera egokia erantzutea, probaren amaieraraino.",
+    "Benetako proba hasi aurretik, bi adibide erakutsiko zaikizu, probaren nondik norakoak argi ulertu dituzula egiaztatzeko.",
     "Aldez aurretik, eskerrik asko ikerketa honetan parte hartzeko denbora eskaintzeagatik. Zure parte hartzea oso baliagarria eta garrantzitsua da guretzat."],
     "option0":"1. Bideoa, argi eta garbi",
     "option1":"1. Bideoa, gutxigatik",
@@ -20,5 +20,11 @@
     "video1" : "1. Bideoa",
     "video2" : "2. Bideoa",
     "thankYouTitle": "Eskerrik asko!",
-    "thankYouText": "Eskerrik asko ariketa hau egiteko eskainitako denboragatik. Zure parte hartzea oso erabilgarria eta garrantzitsua da guretzat."
+    "thankYouText": "Eskerrik asko ariketa hau egiteko eskainitako denboragatik. Zure parte hartzea oso erabilgarria eta garrantzitsua da guretzat.",
+    "examplesTitle": "Adibideak",
+    "examplesExplanation": "Hemen bi bideo pare aurkeztuko zaizkizu, adibide gisan, eta pare bakoitzean aukera egokia zein den eta zergatik azalduko zaizu.",
+    "example1Title":"1. Adibidea",
+    "example2Title":"2. Adibidea",
+    "example1Text":"Adibide honetan, 1. Bideoak, animazio natural eta errealistagoa erakusten du 2. Bideoak baino, 2. bideoak animazio zaratatsua erakusten baitu, dardara gogorrez beterikoa. Kasu honetan, erantzun egokiena <b>1. Bideoa, argi eta garbi</b> litzateke.",
+    "example2Text":"Adibide honetan ere, 1. Bideoak erakusten du animazio egokiena, 2. Bideoak animazio arraroa erakusten baitu, pertsonaia era robotikoan mugitzen dela ikusten delako. Kasu honetan, aukera onena <b>1. Bideoa, gutxigatik</b> edo <b>1. Bideoa, argi eta garbi</b> litzateke, zure iritziaren arabera."
 }
