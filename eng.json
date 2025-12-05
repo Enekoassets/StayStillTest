@@ -18,5 +18,7 @@
     "submitButton":"Send",
     "mainQuestion": "Which video is the most natural and realistic one?",
     "video1" : "Video 1",
-    "video2" : "Video 2"
+    "video2" : "Video 2",
+    "thankYouTitle": "Thank you!",
+    "thankYouText": "Thank you for participating in this exercise. Your participation is very useful and important to us."
 }

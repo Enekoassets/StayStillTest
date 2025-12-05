@@ -155,17 +155,18 @@
       form.reset();
       loadNextVideos(responseCount);
     } else {
-      document.body.innerHTML = `
-        <div class="flex flex-col items-center justify-center h-screen text-center">
-          <h1 class="text-3xl font-bold mb-4">Eskerrik asko!</h1>
-          <p class="text-lg">Amaitu duzu proba (${maxResponses} erantzun).</p>
-        </div>
-      `;
+      window.location.href = "final.html";
     }
 
   } catch (err) {
     console.error(err);
-    alert("Errorea datuak gordetzean.");
+    if(language == "es"){
+      alert("Error al guardar los datos. Por favor, póngase en contacto con el administrador.");
+    } else if(language == "en"){
+      alert("Error saving data. Please, contact the administrator.");
+    } else{
+      alert("Errorea datuak gordetzean. Abisatu administratzaileari, mesedez.");
+    }
   }
   });
 

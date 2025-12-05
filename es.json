@@ -18,5 +18,7 @@
     "submitButton":"Enviar",
     "mainQuestion": "¿Qué video es el más natural?",
     "video1" : "Video 1",
-    "video2" : "Video 2"
+    "video2" : "Video 2",
+    "thankYouTitle": "Muchas gracias!",
+    "thankYouText": "Muchas gracias por participar en este ejercicio. Su participación es muy útil e importante para nosotros."
 }

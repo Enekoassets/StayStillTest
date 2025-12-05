@@ -18,5 +18,7 @@
     "submitButton":"Bidali",
     "mainQuestion": "Zein bideo iruditzen zaizu naturalena eta errealistena?",
     "video1" : "1. Bideoa",
-    "video2" : "2. Bideoa"
+    "video2" : "2. Bideoa",
+    "thankYouTitle": "Eskerrik asko!",
+    "thankYouText": "Eskerrik asko ariketa hau egiteko eskainitako denboragatik. Zure parte hartzea oso erabilgarria eta garrantzitsua da guretzat."
 }
