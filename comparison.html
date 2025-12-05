@@ -125,6 +125,7 @@
   var numVideos = 55;
   var attentionCheck1 = 7;
   var attentionCheck2 = 17;
+  const userID = Date.now();
   loadNextVideos(responseCount);
   loadFirebase();
   // 5. Handle user selection
@@ -133,7 +134,14 @@
 
     const selected = form.querySelector("input[name='preferredVideo']:checked");
     if (!selected) {
-      alert("Bideo bat aukeratu behar duzu jarraitzeko.");
+      if(language == "es"){
+        alert("Por favor, selecciona una opción.");
+      }
+      else if(language == "en"){
+        alert("Please select an option.");
+      } else{
+        alert("Bideo bat aukeratu behar duzu jarraitzeko.");
+      }
       return;
     }
     
@@ -142,7 +150,8 @@
       left: videoContainers[0].src.split("/")[videoContainers[0].src.split("/").length-2],
       right: videoContainers[1].src.split("/")[videoContainers[1].src.split("/").length-2],
       choice: selected.value,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      userID: userID
     };
     
     localStorage.setItem(`videoChoice_${videoId}`, JSON.stringify(result));
