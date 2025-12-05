@@ -120,7 +120,7 @@
   var db;
   var videoId;
   var responseCount = 0;
-  var maxResponses = 30;
+  var maxResponses = 22;
   var videoIds = [];
   var numVideos = 55;
   var attentionCheck1 = 7;
@@ -195,7 +195,6 @@ function loadNextVideos(responseCount){
   var path1 = `videos/${chosen[0]}/${chosen[0]}_${videoId}.mp4`;
   var path2 = `videos/${chosen[1]}/${chosen[1]}_${videoId}.mp4`;
 
-  console.log(responseCount, attentionCheck1, attentionCheck2);
   if(responseCount === attentionCheck1){
     path1 = `videos/attentionChecks/${localStorage.getItem("language")}1.mp4`;
     path2 = `videos/attentionChecks/${localStorage.getItem("language")}1.mp4`;
@@ -219,7 +218,6 @@ function loadNextVideos(responseCount){
   videoContainers.forEach((video, index) => {
     video.addEventListener("ended", () => {
       videoEnded[index] = true;
-      console.log(`Video ${index} (${order[index]}) ended`);
 
       // Visual feedback (optional)
       video.classList.add("ring-4", "ring-green-400");
@@ -228,7 +226,6 @@ function loadNextVideos(responseCount){
       if (videoEnded.every(Boolean)) {
         submitButton.disabled = false;
         submitButton.classList.remove("opacity-50", "cursor-not-allowed");
-        console.log("✅ Both videos finished — user can submit now.");
       }
     });
   });
