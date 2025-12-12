@@ -26,5 +26,11 @@
     "example1Title":"Example 1",
     "example2Title":"Example 2",
     "example1Text":"In this example, Video 1 clearly shows a more natural and realistic animation than Video 2, since video 2 is a very noisy animation with extreme jitter. In this case, the best option would be <b>Video 1, clear preference</b>.",
-    "example2Text":"In this example, Video 1 also shows the more naturalistic animation, since video 2 shows a strange animation, in which the subject is moving in a very robotic way. In this case, the best option would be <b>Video 1, slight preference</b> or <b>Video 1, clear preference</b>, depending on your personal opinion."
+    "example2Text":"In this example, Video 1 also shows the more naturalistic animation, since video 2 shows a strange animation, in which the subject is moving in a very robotic way. In this case, the best option would be <b>Video 1, slight preference</b> or <b>Video 1, clear preference</b>, depending on your personal opinion.",
+    "informationLabel": "Please, put in your information",
+    "ageLabel": "Age",
+    "inputGenderTxt": "Gender",
+    "inputMaleTxt": "Male",
+    "inputFemaleTxt": "Female",
+    "inputNBTxt": "Non-binary"
 }

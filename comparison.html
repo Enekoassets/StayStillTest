@@ -118,6 +118,8 @@
   document.addEventListener("DOMContentLoaded", () => {
   const videoContainers = document.querySelectorAll("video");
   const form = document.querySelector("form");
+  const age = localStorage.getItem("age");
+  const gender = localStorage.getItem("gender");
   var db;
   var videoId;
   var responseCount = 0;
@@ -152,7 +154,11 @@
       right: videoContainers[1].src.split("/")[videoContainers[1].src.split("/").length-2],
       choice: selected.value,
       timestamp: new Date().toISOString(),
-      userID: userID
+      userID: userID,
+      responseCount: responseCount,
+      age: age,
+      gender: gender,
+      language: language
     };
     
     localStorage.setItem(`videoChoice_${videoId}`, JSON.stringify(result));
@@ -216,7 +222,13 @@ function loadNextVideos(responseCount){
   } else if(responseCount === attentionCheck2){
     path1 = `videos/attentionChecks/${localStorage.getItem("language")}1.mp4`;
     path2 = `videos/attentionChecks/${localStorage.getItem("language")}2.mp4`;
-  } else {
+  } else if(responseCount === 0){
+    path1 = `videos/gt/gt_${videoId}.mp4`;
+    path2 = `videos/noise/noise_${videoId}.mp4`;
+  } else if(responseCount === 1){
+    path1 = `videos/slerp/slerp_${videoId}.mp4`;
+    path2 = `videos/gt/gt_${videoId}.mp4`;
+  }  else {
     path1 = `videos/${chosen[0]}/${chosen[0]}_${videoId}.mp4`;
     path2 = `videos/${chosen[1]}/${chosen[1]}_${videoId}.mp4`;
   }

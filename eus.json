@@ -26,5 +26,11 @@
     "example1Title":"1. Adibidea",
     "example2Title":"2. Adibidea",
     "example1Text":"Adibide honetan, 1. Bideoak, animazio natural eta errealistagoa erakusten du 2. Bideoak baino, 2. bideoak animazio zaratatsua erakusten baitu, dardara gogorrez beterikoa. Kasu honetan, erantzun egokiena <b>1. Bideoa, argi eta garbi</b> litzateke.",
-    "example2Text":"Adibide honetan ere, 1. Bideoak erakusten du animazio egokiena, 2. Bideoak animazio arraroa erakusten baitu, pertsonaia era robotikoan mugitzen dela ikusten delako. Kasu honetan, aukera onena <b>1. Bideoa, gutxigatik</b> edo <b>1. Bideoa, argi eta garbi</b> litzateke, zure iritziaren arabera."
+    "example2Text":"Adibide honetan ere, 1. Bideoak erakusten du animazio egokiena, 2. Bideoak animazio arraroa erakusten baitu, pertsonaia era robotikoan mugitzen dela ikusten delako. Kasu honetan, aukera onena <b>1. Bideoa, gutxigatik</b> edo <b>1. Bideoa, argi eta garbi</b> litzateke, zure iritziaren arabera.",
+    "informationLabel": "Mesedez, jarri zure informazioa",
+    "ageLabel": "Adina",
+    "inputGenderTxt": "Generoa",
+    "inputMaleTxt": "Gizona",
+    "inputFemaleTxt": "Emakumea",
+    "inputNBTxt": "Ez-bitarra"
 }

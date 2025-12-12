@@ -18,11 +18,32 @@
   <!-- Main Video Section -->
   <main class="flex flex-col items-center justify-center flex-grow p-6">
     <p id="explanation" class="text-xl"></p>
+    <div class="p-6 bg-blue-100 rounded-2xl my-2">
+      <p id="informationLabel" class="p-6">Please, put in your information.</p>
+      <div class="p-6">
+      <label for="ageInput" id="ageLabel" class="p-6">Age</label><input id ="ageInput" type="number" name="age" min="0" max="100">
+      </div>
+      <fieldset class="p-6">
+        <legend id="inputGenderTxt" class="p-2">Gender</legend>
+        <div>
+          <input type="radio" id="male" name="drone" value="male"/>
+          <label id="inputMaleTxt" for="male">Male</label>
+        </div>
+        <div>
+          <input type="radio" id="female" name="drone" value="female"/>
+          <label id="inputFemaleTxt" for="female">Female</label>
+        </div>
+        <div>
+          <input type="radio" id="non-binary" name="drone" value="non-binary"/>
+          <label id="inputNBTxt" for="non-binary">Non-binary</label>
+        </div>
+      </fieldset>
+    </div>
   </main>
   <!-- Selection Section -->
   <section class="flex flex-col bg-white shadow-inner py-8 px-6 items-center">
     <h2 id="selectionText" class="text-2xl font-semibold text-center mb-6"></h2>
-    <a href="example.html"><button id="startButton" class="mt-4 md:mt-0 bg-green-600 text-white font-semibold px-6 py-2 rounded-xl hover:bg-green-700 transition"></button></a>
+    <a href="comparison.html"><button id="startButton" class="mt-4 md:mt-0 bg-green-600 text-white font-semibold px-6 py-2 rounded-xl hover:bg-green-700 transition opacity-50 cursor-not-allowed"></button></a>
   </section>
   </div>
   <!-- Footer -->
@@ -31,6 +52,9 @@
   </footer>
 </body>
 <script>
+  startButton = document.getElementById("startButton");
+  startButton.disabled = true;
+
   let translations = {};
   var language = localStorage.getItem("language");
   loadLanguage(language);
@@ -51,7 +75,31 @@
     document.getElementById("selectionText").innerHTML = translations.selectionText;
     document.getElementById("startButton").innerHTML = translations.startButton;
     document.getElementById("explanation").innerHTML = translations.explanation.join("<br><br>");
+    document.getElementById("ageLabel").innerHTML = translations.ageLabel;
+    document.getElementById("inputGenderTxt").innerHTML = translations.inputGenderTxt;
+    document.getElementById("inputMaleTxt").innerHTML = translations.inputMaleTxt;
+    document.getElementById("inputFemaleTxt").innerHTML = translations.inputFemaleTxt;
+    document.getElementById("inputNBTxt").innerHTML = translations.inputNBTxt;
+    document.getElementById("informationLabel").innerHTML = translations.informationLabel;
     }
-  
+
+  function handleInputChange() {
+    const age = document.getElementById("ageInput").value;
+    const gender = document.querySelector('input[name="drone"]:checked')?.value || "not selected";
+    
+    localStorage.setItem("age", age);
+    localStorage.setItem("gender", gender);
+    if(age>0 && age<100 && gender != "not selected"){
+      startButton.classList.remove('cursor-not-allowed');
+      startButton.classList.remove('opacity-50');
+      startButton.disabled = false;
+    } 
+  }
+
+  const ageInput = document.getElementById("ageInput");
+  ageInput.addEventListener("input", handleInputChange);
+  const genderInputs = document.querySelectorAll('input[name="drone"]');
+  genderInputs.forEach(input => input.addEventListener("change", handleInputChange));
+
 </script>
 </html>
