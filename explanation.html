@@ -90,7 +90,7 @@
 
   function handleInputChange() {
     const age = Number(document.getElementById("ageInput").value);
-    const gender = document.querySelector('input[name="drone"]:checked')?.value || "not selected";
+    const gender = document.querySelector('input[name="gender"]:checked')?.value || "not selected";
     
     localStorage.setItem("age", age);
     localStorage.setItem("gender", gender);
@@ -103,7 +103,7 @@
 
   const ageInput = document.getElementById("ageInput");
   ageInput.addEventListener("input", handleInputChange);
-  const genderInputs = document.querySelectorAll('input[name="drone"]');
+  const genderInputs = document.querySelectorAll('input[name="gender"]');
   genderInputs.forEach(input => input.addEventListener("change", handleInputChange));
 
 </script>
