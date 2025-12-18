@@ -32,5 +32,8 @@
     "inputGenderTxt": "Género",
     "inputMaleTxt": "Masculino",
     "inputFemaleTxt": "Femenino",
-    "inputNBTxt": "No-binario"
+    "inputNBTxt": "No-binario",
+    "feedbackLabel": "Escribe tu comentario aquí, y pulsa el botón",
+    "feedbackText": "Finalmente, puedes escribir cualquier comentario que tengas acerca de este ejercicio. Este paso es opcional, puedes cerrar la ventana si lo deseas.",
+    "feedbackButton": "Enviar comentario"
 }

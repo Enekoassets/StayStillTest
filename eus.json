@@ -32,5 +32,8 @@
     "inputGenderTxt": "Generoa",
     "inputMaleTxt": "Gizona",
     "inputFemaleTxt": "Emakumea",
-    "inputNBTxt": "Ez-bitarra"
+    "inputNBTxt": "Ez-bitarra",
+    "feedbackLabel": "Idatzi zure iruzkinak hemen, eta sakatu botoia",
+    "feedbackText": "Azkenik, hemen idatzi ditzakezu nahi dituzun iruzkinak. Zati hau ez da derrigorrezkoa, leihoa itxi dezakezu nahi baduzu.",
+    "feedbackButton": "Bidali iruzkinak"
 }

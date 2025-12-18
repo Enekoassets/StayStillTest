@@ -43,7 +43,7 @@
   <!-- Selection Section -->
   <section class="flex flex-col bg-white shadow-inner py-8 px-6 items-center">
     <h2 id="selectionText" class="text-2xl font-semibold text-center mb-6"></h2>
-    <a href="comparison.html"><button id="startButton" class="mt-4 md:mt-0 bg-green-600 text-white font-semibold px-6 py-2 rounded-xl hover:bg-green-700 transition opacity-50 cursor-not-allowed"></button></a>
+    <a href="comparison.html"><button id="startButton" onclick="registerStartTime()" class="mt-4 md:mt-0 bg-green-600 text-white font-semibold px-6 py-2 rounded-xl hover:bg-green-700 transition opacity-50 cursor-not-allowed"></button></a>
   </section>
   </div>
   <!-- Footer -->
@@ -68,6 +68,11 @@
       }
   }
   
+  function registerStartTime() {
+    const timestamp = Date.now(); // milliseconds since epoch
+    localStorage.setItem("startButtonClickTime", timestamp);
+  }
+
   function updateContent() {
     document.title = translations.title;
     document.getElementById("headerTitle").innerHTML = translations.headerTitle;

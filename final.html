@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
   <script src="https://cdn.tailwindcss.com"></script>
-
 </head>
+
 <body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
 
   <!-- Header -->
@@ -14,35 +14,118 @@
     <h1 id="thankYouTitle" class="text-3xl font-bold"></h1>
   </header>
 
-  <!-- Main Video Section -->
-  <main class="flex flex-col items-center justify-center flex-grow p-6">
-    <p id="thankYouText" class="text-xl"></p>
+  <!-- Main Section -->
+  <main class="flex flex-col items-center justify-center flex-grow p-6 space-y-6 w-full max-w-xl mx-auto">
+    <p id="thankYouText" class="text-xl text-center"></p>
+    <p id="feedbackText" class="text-xl text-center"></p>
+    <!-- Feedback box -->
+    <div class="w-full">
+      <label id ="feedbackLabel" for="feedback" class="block text-sm font-medium text-gray-700 mb-2">
+      </label>
+      <textarea
+        id="feedback"
+        rows="5"
+        class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      ></textarea>
+    </div>
+
+    <!-- Submit button -->
+    <button
+      onclick="sendFeedback()"
+      class="px-6 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition" id="feedbackButton"
+    >
+      
+    </button>
   </main>
-  </div>
+
   <!-- Footer -->
   <footer class="text-center text-gray-500 text-sm py-4">
     © 2025 Eneko Atxa Landa
   </footer>
+
 </body>
+
 <script>
   let translations = {};
   var language = localStorage.getItem("language");
   loadLanguage(language);
+
   async function loadLanguage(lang) {
     try {
-        const response = await fetch(`${lang}.json`);
-        translations = await response.json();
-        updateContent();
-      } catch (err) {
-        console.error("Failed to load language file:", err);
-      }
+      const response = await fetch(`${lang}.json`);
+      translations = await response.json();
+      updateContent();
+    } catch (err) {
+      console.error("Failed to load language file:", err);
+    }
   }
-  
+
   function updateContent() {
     document.title = translations.title;
     document.getElementById("thankYouTitle").innerHTML = translations.thankYouTitle;
     document.getElementById("thankYouText").innerHTML = translations.thankYouText;
+    document.getElementById("feedbackText").innerHTML = translations.feedbackText;
+    document.getElementById("feedbackLabel").innerHTML = translations.feedbackLabel;
+    document.getElementById("feedbackButton").innerHTML = translations.feedbackButton;
+  }
+
+  async function sendFeedback() {
+    const feedbackText = document.getElementById("feedback").value.trim();
+    const age = localStorage.getItem("age");
+    const gender = localStorage.getItem("gender");
+    const language = localStorage.getItem("language");
+
+    if (!feedbackText) {
+      if (language === "es") {
+        alert("Por favor, escribe algún comentario.");
+      } else if (language === "en") {
+        alert("Please write some feedback.");
+      } else {
+        alert("Mesedez, idatzi iruzkin bat.");
+      }
+      return;
     }
-  
+
+    const result = {
+      feedbackText: feedbackText,
+      age: age,
+      gender: gender,
+      language: language,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    };
+
+    try {
+      await db.collection("feedback").add(result);
+
+      document.getElementById("feedback").value = "";
+
+      if (language === "es") {
+        alert("Los datos se han guardado correctamente.");
+      } else if (language === "en") {
+        alert("Data saved successfully.");
+      } else {
+        alert("Datuak gorde dira.");
+      }
+
+      const btn = document.getElementById("feedbackButton");
+      if (btn) {
+        btn.disabled = true;
+        btn.classList.add("cursor-not-allowed", "opacity-50");
+      }
+
+    } catch (err) {
+      console.error(err);
+
+      if (language === "es") {
+        alert("Error al guardar los datos. Por favor, póngase en contacto con el administrador.");
+      } else if (language === "en") {
+        alert("Error saving data. Please contact the administrator.");
+      } else {
+        alert("Errorea datuak gordetzean. Abisatu administratzaileari, mesedez.");
+      }
+    }
+  }
+
 </script>
+
 </html>
