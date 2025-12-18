@@ -243,11 +243,11 @@ function loadNextVideos(responseCount){
     path1 = `videos/attentionChecks/${localStorage.getItem("language")}1.mp4`;
     path2 = `videos/attentionChecks/${localStorage.getItem("language")}2.mp4`;
   } else if(responseCount === 0){
-    path1 = `videos/gt/gt_${videoId}.mp4`;
-    path2 = `videos/noise/noise_${videoId}.mp4`;
+    path1 = `videos/gt/gt_9.mp4`;
+    path2 = `videos/noise/noise_9.mp4`;
   } else if(responseCount === 1){
-    path1 = `videos/slerp/slerp_${videoId}.mp4`;
-    path2 = `videos/gt/gt_${videoId}.mp4`;
+    path1 = `videos/slerp/slerp_28.mp4`;
+    path2 = `videos/gt/gt_28.mp4`;
   }  else {
     path1 = `videos/${chosen[0]}/${chosen[0]}_${videoId}.mp4`;
     path2 = `videos/${chosen[1]}/${chosen[1]}_${videoId}.mp4`;
