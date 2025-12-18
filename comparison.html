@@ -264,8 +264,8 @@ function loadNextVideos(responseCount){
   });
 
   // Assign sources:
-  videoContainers[0].src = order[0] === 0 ? path1 : path2;
-  videoContainers[1].src = order[1] === 0 ? path1 : path2;
+  videoContainers[0].src = path1;
+  videoContainers[1].src = path2;
 
   // Add listeners only once:
   videoContainers.forEach((video, index) => {
