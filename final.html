@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Firebase App (core) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <!-- Firebase Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 </head>
 
 <body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
@@ -76,6 +80,7 @@
     const age = localStorage.getItem("age");
     const gender = localStorage.getItem("gender");
     const language = localStorage.getItem("language");
+    const userID = localStorage.getItem("userID");
 
     if (!feedbackText) {
       if (language === "es") {
@@ -93,6 +98,7 @@
       age: age,
       gender: gender,
       language: language,
+      userID: userID,
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
     };
 

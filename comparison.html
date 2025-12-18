@@ -121,6 +121,7 @@
   const age = localStorage.getItem("age");
   const gender = localStorage.getItem("gender");
   var db;
+  loadFirebase();
   var videoId;
   var responseCount = 0;
   var maxResponses = 20;
@@ -129,8 +130,8 @@
   var attentionCheck1 = Math.floor(Math.random() * 4) + 5;
   var attentionCheck2 = Math.floor(Math.random() * 4) + 13;
   const userID = Date.now();
+  localStorage.setItem("userID", userID);
   loadNextVideos(responseCount);
-  loadFirebase();
   // 5. Handle user selection
   form.addEventListener("submit", async(e) => {
     e.preventDefault();
