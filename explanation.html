@@ -89,7 +89,7 @@
     }
 
   function handleInputChange() {
-    const age = document.getElementById("ageInput").value;
+    const age = Number(document.getElementById("ageInput").value);
     const gender = document.querySelector('input[name="drone"]:checked')?.value || "not selected";
     
     localStorage.setItem("age", age);
