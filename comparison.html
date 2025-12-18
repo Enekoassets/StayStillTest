@@ -174,7 +174,7 @@
       form.reset();
       loadNextVideos(responseCount);
     } else {
-      registerEndTime();
+      await registerEndTime();
       window.location.href = "final.html";
     }
 
@@ -195,9 +195,9 @@
     const startTime = Number(localStorage.getItem("startButtonClickTime"));
 
     const result = {
-      startTime,
-      endTime,
-      userID
+      startTime: startTime,
+      endTime: endTime,
+      userId: userID
     };
 
     try {

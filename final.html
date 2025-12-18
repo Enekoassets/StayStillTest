@@ -49,6 +49,8 @@
   let translations = {};
   var language = localStorage.getItem("language");
   loadLanguage(language);
+  var db;
+  loadFirebase();
 
   async function loadLanguage(lang) {
     try {
@@ -124,6 +126,22 @@
         alert("Errorea datuak gordetzean. Abisatu administratzaileari, mesedez.");
       }
     }
+  }
+
+  function loadFirebase(){
+    const firebaseConfig = {
+      apiKey: "AIzaSyDnzX-AfwckOMR7lpGlD-7WNUU9kNJDXGk",
+      authDomain: "videocomparison-6fb38.firebaseapp.com",
+      projectId: "videocomparison-6fb38",
+      storageBucket: "videocomparison-6fb38.firebasestorage.app",
+      messagingSenderId: "58783934505",
+      appId: "1:58783934505:web:d1559111e9c306700cd438"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Get Firestore reference
+    db = firebase.firestore();
   }
 
 </script>
