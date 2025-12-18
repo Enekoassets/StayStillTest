@@ -224,7 +224,7 @@ function loadNextVideos(responseCount){
     videoId = Math.floor(Math.random() * numVideos) + 1;
   }
   videoIds.push(videoId);
-  console.log(videoIds);
+
   const options = ["easing", "gt", "nn", "noise", "slerp"];
   const chosen = [];
 
@@ -252,10 +252,6 @@ function loadNextVideos(responseCount){
     path1 = `videos/${chosen[0]}/${chosen[0]}_${videoId}.mp4`;
     path2 = `videos/${chosen[1]}/${chosen[1]}_${videoId}.mp4`;
   }
-  // 2. Build the video paths
-
-  // 3. Randomly assign left/right positions
-  const order = Math.random() < 0.5 ? [0,1] : [1,0];
 
   // Reset videoEnded state:
   let videoEnded = [false, false];
